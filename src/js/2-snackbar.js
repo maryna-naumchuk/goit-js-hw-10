@@ -1,14 +1,14 @@
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
-document.querySelector('.form').addEventListener('submit', function (event) {
+document.querySelector(".form").addEventListener("submit", function (event) {
   event.preventDefault();
   const delay = parseInt(event.target.elements.delay.value, 10);
   const state = event.target.elements.state.value;
 
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
-      if (state === 'fulfilled') {
+      if (state === "fulfilled") {
         resolve(delay);
       } else {
         reject(delay);
@@ -19,24 +19,24 @@ document.querySelector('.form').addEventListener('submit', function (event) {
   promise
     .then(delay => {
       iziToast.success({
-        title: '',
+        title: "",
         message: `✅ Fulfilled promise in ${delay}ms`,
-        position: 'topRight',
+        position: "topRight",
         icon: null,
       });
     })
     .catch(delay => {
       iziToast.error({
-        title: '',
+        title: "",
         message: `❌ Rejected promise in ${delay}ms`,
-        position: 'topRight',
+        position: "topRight",
         icon: null,
       });
     });
   event.target.reset();
 });
 
-const styleElement = document.createElement('style');
+const styleElement = document.createElement("style");
 const styles = `
 .form {
     font-family: "Montserrat", sans-serif;

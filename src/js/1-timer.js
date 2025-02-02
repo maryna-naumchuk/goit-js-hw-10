@@ -4,13 +4,12 @@ import "flatpickr/dist/flatpickr.min.css";
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
-
-const inputEl = document.querySelector('#datetime-picker');
-const buttonEl = document.querySelector('[data-start]');
-const daysEl = document.querySelector('[data-days]');
-const hoursEl = document.querySelector('[data-hours]');
-const minutesEl = document.querySelector('[data-minutes]');
-const secondsEl = document.querySelector('[data-seconds]');
+const inputEl = document.querySelector("#datetime-picker");
+const buttonEl = document.querySelector("[data-start]");
+const daysEl = document.querySelector("[data-days]");
+const hoursEl = document.querySelector("[data-hours]");
+const minutesEl = document.querySelector("[data-minutes]");
+const secondsEl = document.querySelector("[data-seconds]");
 
 let userSelectedDate;
 let countdownTimer;
@@ -27,12 +26,12 @@ const options = {
     console.log(userSelectedDate);
     if (userSelectedDate < new Date()) {
       iziToast.error({
-        title: 'Error',
-        message: 'Please choose a date in the future',
-        position: 'topRight',
-        titleColor: '#fff',
-        messageColor: '#fff',
-        color: '#ef4040',
+        title: "Error",
+        message: "Please choose a date in the future",
+        position: "topRight",
+        titleColor: "#fff",
+        messageColor: "#fff",
+        color: "#ef4040",
         icon: null,
       });
       buttonEl.disabled = true;
@@ -42,9 +41,9 @@ const options = {
   },
 };
 
-flatpickr('#datetime-picker', options);
+flatpickr("#datetime-picker", options);
 
-buttonEl.addEventListener('click', function () {
+buttonEl.addEventListener("click", function () {
   this.disabled = true;
   inputEl.disabled = true;
   countdownTimer = setInterval(function () {
@@ -52,10 +51,10 @@ buttonEl.addEventListener('click', function () {
     let distance = userSelectedDate - now;
     if (distance < 0) {
       clearInterval(countdownTimer);
-      daysEl.textContent = '00';
-      hoursEl.textContent = '00';
-      minutesEl.textContent = '00';
-      secondsEl.textContent = '00';
+      daysEl.textContent = "00";
+      hoursEl.textContent = "00";
+      minutesEl.textContent = "00";
+      secondsEl.textContent = "00";
       buttonEl.disabled = true;
       inputEl.disabled = false;
       return;
@@ -81,11 +80,11 @@ function convertMs(ms) {
 }
 
 function addLeadingZero(value) {
-  return String(value).padStart(2, '0');
+  return String(value).padStart(2, "0");
 }
 
-const styleElement = document.createElement('style');
-styleElement.type = 'text/css';
+const styleElement = document.createElement("style");
+styleElement.type = "text/css";
 const styles = `
 body {
   font-weight: 400;
